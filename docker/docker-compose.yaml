@@ -1,0 +1,15 @@
+services: 
+  fastapi:
+    build:
+      context: ../
+      dockerfile: ./docker/Dockerfile
+    ports:
+      - 8000:8000
+    environment:
+      - KAFKA_URL=89.108.73.166:9092
+      - RESPONSE_TOPIC_SUFFIX=Response
+      - TOPIC_NAME=CsvData
+      - USE_KRB=False
+      - SEGMENT_LENGTH=100
+      - MODEL_PATH=./code/artifacts/model/defect_model.pkl
+    container_name: it-camp-ml
